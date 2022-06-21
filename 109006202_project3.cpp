@@ -312,16 +312,16 @@ std::pair<int, std::pair<int,int>> setBoardScore(int player, int enemy, bool max
                 for(int k = 0; k < size; k++){
                     //std::cout << enemy_data[k] << " ";
                     if(enemy_data[k] == 5){
-                        boardscore[i][j] += 3000; //lose
+                        boardscore[i][j] -= 3000; //lose
                     }
                     else if(enemy_data[k] == 4){
-                        boardscore[i][j] += 120;
+                        boardscore[i][j] -= 120;
                     }
                     else if(enemy_data[k] == 3){
-                        boardscore[i][j] += 80;
+                        boardscore[i][j] -= 80;
                     }
                     else if(enemy_data[k] == 2){
-                        boardscore[i][j] += 5;
+                        boardscore[i][j] -= 5;
                     }
                     // else if(enemy_data[k] == 1){
                     //     boardscore[i][j] -= 2;
@@ -385,15 +385,15 @@ void write_valid_spot(std::ofstream& fout) {
         enemy = BLACK;
 
     std::pair<int, std::pair<int,int>> best_move;
-    if(player == BLACK)
-        best_move = setBoardScore(player, enemy, true);
-    else if(player == WHITE)
-        best_move = setBoardScore(enemy, player, true);
-    x = best_move.second.first;
-    y = best_move.second.second;
-    // best_move = minimax(1, player, enemy, false);
+    // if(player == BLACK)
+    //     best_move = setBoardScore(player, enemy, true);
+    // else if(player == WHITE)
+    //     best_move = setBoardScore(enemy, player, true);
     // x = best_move.second.first;
     // y = best_move.second.second;
+    best_move = minimax(2, player, enemy, false);
+    x = best_move.second.first;
+    y = best_move.second.second;
     // int best_score = INT_MIN;
     // for(int i = 0; i < SIZE; i++){
     //     for(int j = 0; j < SIZE; j++){
