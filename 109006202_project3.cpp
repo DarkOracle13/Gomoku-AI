@@ -391,7 +391,7 @@ void write_valid_spot(std::ofstream& fout) {
     //     best_move = setBoardScore(enemy, player, true);
     // x = best_move.second.first;
     // y = best_move.second.second;
-    best_move = minimax(2, player, enemy, false);
+    best_move = minimax(1, player, enemy, false);
     x = best_move.second.first;
     y = best_move.second.second;
     // int best_score = INT_MIN;
